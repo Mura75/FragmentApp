@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         //Show fragment in container
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragmentContainer, new FirstFragment())
+                .replace(R.id.fragmentContainer1, new FirstFragment())
                 .commit();
     }
 }
