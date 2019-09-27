@@ -1,6 +1,7 @@
 package kz.mobile.fragmentapp;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,18 @@ public class FirstFragment extends Fragment {
 
     private Button button;
 
+    private FirstFragmentListener listener;
+
+    private int counter = 0;
+
     public FirstFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        listener = (FirstFragmentListener) context;
     }
 
     @Override
@@ -36,8 +47,14 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Show toast on click
-                Toast.makeText(getContext(), "Hello", Toast.LENGTH_LONG).show();
+                counter++;
+                listener.counterResult(counter);
             }
         });
+    }
+
+    interface FirstFragmentListener {
+
+        void counterResult(int count);
     }
 }
